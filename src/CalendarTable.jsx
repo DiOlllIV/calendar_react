@@ -7,13 +7,13 @@ const CalendarTable = () => {
         <div className="calendar-table">
             {generateNumbers(0, 6).map(tableColumn =>    
                 (
-                    <div className="calendar-section"
-                        data-line-number={tableColumn}
+                    <div key={tableColumn}
+                        className="calendar-section" 
                     >
                         {generateNumbers(0, 23).map(tableLine =>
                             (
-                                <div className="calendar-section__item"
-                                    data-line-number={tableLine}
+                                <div key={tableLine}
+                                    className="calendar-section__item"
                                 >
                                 </div>
                             ))}

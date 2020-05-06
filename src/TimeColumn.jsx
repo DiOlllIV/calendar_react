@@ -5,8 +5,8 @@ const TimeColumn = () =>
     <div className="time-column">
         {generateNumbers(1, 23).map(timeItem => 
             (
-                <div className="time-column__line"
-                    data-line-number={timeItem}
+                <div key={timeItem}
+                    className="time-column__line"
                 >
                     {timeItem <= 9 ?
                         `0${timeItem}:00` :
