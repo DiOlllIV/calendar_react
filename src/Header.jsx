@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Header = () => {
-
+const Header = (props) => {
+    const {currMonth, currDay, nextWeek, prevWeek} = props;
         return(
             <header className="header">
                 <button className="create-btn">
@@ -21,16 +21,22 @@ const Header = () => {
                     </svg> 
                     <span className="create-btn__text">Create</span>
                 </button>
-                <button className="today-btn">
+                <button className="today-btn"
+                    onClick={currDay}
+                >
                     Today
                 </button>
-                <button className="btn-left">
+                <button className="btn-left"
+                    onClick={prevWeek}
+                >
                     <i className="arrow arrow__left" />
                 </button>
-                <button className="btn-right">
+                <button className="btn-right"
+                    onClick={nextWeek}
+                >
                     <i className="arrow arrow__right" />
                 </button>
-                <span className="title"></span>
+                <span className="title">{currMonth}</span>
             </header>
         );
 };

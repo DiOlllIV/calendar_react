@@ -2,22 +2,22 @@ import React from 'react';
 import generateNumbers from './generateNumbers';
 
 const CalendarHead = (props) => {
-    const {week, today, getMonday} = props;
-    
+    const {getMonday, zeroDay, week, today} = props 
+    getMonday();
         return (
-            <div className="week-line">
-                {generateNumbers(0, 6).map(day => {
-                        getMonday();
+            <div className="week-line" 
+            >
+                {generateNumbers(0, 6).map(day => {   
                         const newDay = new Date(today);
                         newDay.setDate(newDay.getDate() + day);
-                        const currDayWeek = (week.indexOf(week[day]) === new Date().getDay() - 1) ?
+                        const currDayWeek = (week.indexOf(week[day + zeroDay]) === new Date().getDay() - 1) ?
                             (<span className="box-day__week-today">
                                 {week[day]}
                             </span>) :
                             (<span className="box-day__week" >
                                 {week[day]}
                             </span>);
-                        const currDayMonth = (new Date(newDay).getDate() === new Date().getDate()) ?
+                        const currDayMonth = (new Date(newDay + zeroDay).getDate() === new Date().getDate()) ?
                             (<span className="box-day__month-today" >
                                 {new Date(newDay).getDate()}
                             </span>) :

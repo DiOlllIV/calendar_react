@@ -27,15 +27,49 @@ class App extends Component {
         }
     };
 
+    setCurrMonth = () => {
+        let currMonth = this.state.months[this.state.today.getMonth()];
+        return `${currMonth} ${this.state.today.getFullYear()}`;
+    }
+
+    handleCurrDay = () => {
+        this.setState({
+            today: new Date(),
+            zeroDay: 0,
+        });  
+    };
+
+    handleNextWeek = () => {
+        const {today, zeroDay} = this.state;
+        this.setState({
+            today: new Date(today.setDate(today.getDate() + 7)),
+            zeroDay: new Date(zeroDay + 7),
+        });   
+    };
+
+    handlePrevWeek = () => {
+        const {today, zeroDay} = this.state;
+        this.setState({
+            today: new Date(today.setDate(today.getDate() - 7)),
+            zeroDay: new Date(zeroDay - 7),
+        });    
+    };
+
     render() {
         return (
             <>
-                <Header />
+                <Header 
+                    currMonth={this.setCurrMonth()}
+                    nextWeek={this.handleNextWeek}
+                    prevWeek={this.handlePrevWeek}
+                    currDay={this.handleCurrDay}
+                />
                 <section className="calendar">
                     <CalendarHead 
                         week={this.state.week}
                         today={this.state.today}
-                        getMonday={this.getMonday}
+                        getMonday={this.getMonday}  
+                        zeroDay={this.state.zeroDay} 
                     />
                     <div className="calendar-column">
                         <TimeColumn />
