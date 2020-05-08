@@ -17,7 +17,7 @@ const CalendarHead = (props) => {
                             (<span className="box-day__week" >
                                 {week[day]}
                             </span>);
-                        const currDayMonth = (new Date(newDay + zeroDay).getDate() === new Date().getDate()) ?
+                        const currDayMonth = (new Date(newDay).getDate() === new Date().getDate()) && zeroDay === 0 ?
                             (<span className="box-day__month-today" >
                                 {new Date(newDay).getDate()}
                             </span>) :

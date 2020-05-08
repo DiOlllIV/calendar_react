@@ -1,10 +1,12 @@
 import React from 'react';
 
 const Header = (props) => {
-    const {currMonth, currDay, nextWeek, prevWeek} = props;
+    const {currMonth, currDay, nextWeek, prevWeek, popupVisibility} = props;
         return(
             <header className="header">
-                <button className="create-btn">
+                <button className="create-btn"
+                    onClick={popupVisibility}
+                >
                     <svg className="create-btn__icon" width="24" height="24" viewBox="0 0 36 36">
                         <line strokeLinecap="undefined" strokeLinejoin="undefined" id="svg_8" y2="18" x2="18" y1="0.045313" x1="18" strokeWidth="4" stroke="#dae544" fill="none"/>
                         <line stroke="#00ff83" strokeLinecap="undefined" strokeLinejoin="undefined" id="svg_9" y2="18" x2="18" y1="36" x1="18" fillOpacity="null" strokeWidth="4" fill="none"/>

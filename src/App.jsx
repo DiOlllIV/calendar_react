@@ -3,6 +3,7 @@ import Header from './Header';
 import CalendarHead from './CalendarHead';
 import TimeColumn from './TimeColumn';
 import CalendarTable from './CalendarTable';
+import Popup from './Popup';
 
 class App extends Component {
     constructor(props) {
@@ -14,10 +15,8 @@ class App extends Component {
             monthDay: new Date().getDate(),
             weekDay: new Date().getDay() - 1,
             zeroDay: 0,
-            currMonth: '',
-            monthElem: '',
-            popupMonth: '',
-            checkMonthInWeek: false,
+            visible: false,
+            events: [],
         }
     }
 
@@ -43,7 +42,7 @@ class App extends Component {
         const {today, zeroDay} = this.state;
         this.setState({
             today: new Date(today.setDate(today.getDate() + 7)),
-            zeroDay: new Date(zeroDay + 7),
+            zeroDay: zeroDay + 7,
         });   
     };
 
@@ -51,8 +50,14 @@ class App extends Component {
         const {today, zeroDay} = this.state;
         this.setState({
             today: new Date(today.setDate(today.getDate() - 7)),
-            zeroDay: new Date(zeroDay - 7),
+            zeroDay: zeroDay - 7,
         });    
+    };
+    
+    handlePopupVisibility = () => {
+        this.setState({
+            visible: !this.state.visible,
+        });
     };
 
     render() {
@@ -63,6 +68,7 @@ class App extends Component {
                     nextWeek={this.handleNextWeek}
                     prevWeek={this.handlePrevWeek}
                     currDay={this.handleCurrDay}
+                    popupVisibility={this.handlePopupVisibility}
                 />
                 <section className="calendar">
                     <CalendarHead 
@@ -75,6 +81,9 @@ class App extends Component {
                         <TimeColumn />
                         <CalendarTable />
                     </div>
+                    <Popup visible={this.state.visible}
+                        popupVisibility={this.handlePopupVisibility}
+                    />
                 </section>
             </>
         );
