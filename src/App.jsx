@@ -4,6 +4,7 @@ import CalendarHead from './CalendarHead';
 import TimeColumn from './TimeColumn';
 import CalendarTable from './CalendarTable';
 import Popup from './Popup';
+import {getEventsList} from './EventsGateway';
 
 class App extends Component {
     constructor(props) {
@@ -18,6 +19,22 @@ class App extends Component {
             visible: false,
             events: [],
         }
+    }
+
+    componentDidMount() {
+        this.fetchEvents();   
+    }
+
+    componentDidUpdate() {
+        this.fetchEvents();
+    }
+
+    fetchEvents = () => {
+        getEventsList()
+            .then((events) =>
+                this.setState({
+                    events,
+            }));
     }
 
     getMonday = () => {
@@ -79,7 +96,10 @@ class App extends Component {
                     />
                     <div className="calendar-column">
                         <TimeColumn />
-                        <CalendarTable />
+                        <CalendarTable 
+                            events={this.state.events}
+                            today={this.state.today}
+                        />
                     </div>
                     <Popup visible={this.state.visible}
                         popupVisibility={this.handlePopupVisibility}
