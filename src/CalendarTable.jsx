@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import generateNumbers from './generateNumbers';
 import Event from './Event';
-import {deleteEvent} from './EventsGateway';
 import Redline from './Redline';
 
 class CalendarTable extends Component {
@@ -18,10 +17,6 @@ class CalendarTable extends Component {
         });
     };
 
-    handleDeleteEvent = (id) => {
-        deleteEvent(id);
-    };
-
     setRedline = (hour, id) => {
         if (id === `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}` &&
             hour === new Date().getHours())
@@ -29,7 +24,7 @@ class CalendarTable extends Component {
     }
 
     render() {
-        const {today, events} = this.props;
+        const {today, events, handleDeleteEvent} = this.props;
 
         return(
             <div className="calendar-table">
@@ -62,7 +57,7 @@ class CalendarTable extends Component {
                                             comment={event.comment}
                                             btnVisibility={this.handleBtnVisible}
                                             deleteVisible={this.state.deleteVisible}
-                                            deleteEvent={() => this.handleDeleteEvent(event.id)}
+                                            deleteEvent={() => handleDeleteEvent(event.id)}
                                         />);
                                         return null;
                                     })

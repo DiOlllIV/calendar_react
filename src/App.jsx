@@ -4,7 +4,7 @@ import CalendarHead from './CalendarHead';
 import TimeColumn from './TimeColumn';
 import CalendarTable from './CalendarTable';
 import Popup from './Popup';
-import {getEventsList} from './EventsGateway';
+import {getEventsList, deleteEvent} from './EventsGateway';
 
 class App extends Component {
     constructor(props) {
@@ -77,6 +77,12 @@ class App extends Component {
         });
     };
 
+    
+    handleDeleteEvent = (id) => {
+        deleteEvent(id)
+            .then(() => this.fetchEvents());
+    };
+
     render() {
         return (
             <>
@@ -99,6 +105,7 @@ class App extends Component {
                         <CalendarTable 
                             events={this.state.events}
                             today={this.state.today}
+                            handleDeleteEvent={this.handleDeleteEvent}
                         />
                     </div>
                     <Popup visible={this.state.visible}
