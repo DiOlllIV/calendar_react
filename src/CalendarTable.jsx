@@ -30,7 +30,7 @@ class CalendarTable extends Component {
 
     render() {
         const {today, events} = this.props;
-        console.log(events);
+
         return(
             <div className="calendar-table">
                 {generateNumbers(0, 6).map((tableColumn) => {

@@ -43,8 +43,8 @@ const Event = (props) => {
                 id={props.id}
                 style={btnVisibility}
                 onClick={props.deleteEvent}
-            >{props.id}
-                    delete
+            >
+                delete
             </div>
         </div>
     );

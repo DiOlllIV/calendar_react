@@ -25,17 +25,17 @@ class App extends Component {
         this.fetchEvents();   
     }
 
-    componentDidUpdate() {
-        this.fetchEvents();
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.events === this.state.events) 
+            this.fetchEvents();
     }
 
-    fetchEvents = () => {
+    fetchEvents = () => 
         getEventsList()
             .then((events) =>
                 this.setState({
                     events,
             }));
-    }
 
     getMonday = () => {
         while (this.state.today.getDay() !== 1) {

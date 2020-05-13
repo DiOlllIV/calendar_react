@@ -22,7 +22,7 @@ class Popup extends Component {
 
     render() {
         const visibility = this.props.visible ? {visibility:"visible"} : {visibility: 'hidden'};
-        console.log(this.state)
+
         return (
             <div className="pop-up"
                 style={visibility}
