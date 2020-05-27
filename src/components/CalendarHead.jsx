@@ -1,5 +1,5 @@
 import React from 'react';
-import generateNumbers from './generateNumbers';
+import { generateNumbers } from '../addFunctions';
 
 const CalendarHead = (props) => {
     const {getMonday, zeroDay, week, today} = props 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import generateNumbers from './generateNumbers';
+import { generateNumbers } from '../addFunctions';
 import Event from './Event';
 import Redline from './Redline';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import generateNumbers from './generateNumbers';
+import { generateNumbers, getTime } from '../addFunctions';
 
 const TimeColumn = () => 
     <div className="time-column">
@@ -8,10 +8,7 @@ const TimeColumn = () =>
                 <div key={timeItem}
                     className="time-column__line"
                 >
-                    {timeItem <= 9 ?
-                        `0${timeItem}:00` :
-                        `${timeItem}:00`
-                    }
+                    {getTime(timeItem)}
                 </div>
             )
         )}

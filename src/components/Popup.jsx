@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { createEvent , getEventsList} from './EventsGateway';
+import { createEvent , getEventsList} from '../EventsGateway';
 
 class Popup extends Component {
     constructor(props){
