@@ -1,20 +1,9 @@
 import React from 'react';
-
-const getTime = (time) => {
-    const stringH = time.getHours() <= 9 ?
-        `0${time.getHours()}` :
-        `${time.getHours()}`;
-
-    const stringM = time.getMinutes() <= 9 ? 
-        `0${time.getMinutes()}` :
-        `${time.getMinutes()}`;
-    
-        return `${stringH}:${stringM}`;
-};
+import { getEventTime } from '../addFunctions';
 
 const Event = (props) => {
-    const startTime = getTime(new Date(props.startDate));
-    const endTime = getTime(new Date(props.endDate));
+    const startTime = getEventTime(new Date(props.startDate));
+    const endTime = getEventTime(new Date(props.endDate));
     const endEvent = new Date(props.endDate) - new Date(props.startDate);
     const eventHeight = endEvent / 1000 / 60;
     const startPos = (startTime === '00:00') ? 0 :
@@ -40,7 +29,6 @@ const Event = (props) => {
             <span>{`${startTime} - ${endTime}`}</span>
             <span>{props.comment}</span>
             <div className="deleteBtn"
-                id={props.id}
                 style={btnVisibility}
                 onClick={props.deleteEvent}
             >

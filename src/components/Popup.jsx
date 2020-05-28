@@ -21,7 +21,8 @@ class Popup extends Component {
     };
 
     render() {
-        const visibility = this.props.visible ? {visibility:"visible"} : {visibility: 'hidden'};
+        const visibility = this.props.visible ?
+            {visibility:"visible"} : {visibility: 'hidden'};
 
         return (
             <div className="pop-up"
