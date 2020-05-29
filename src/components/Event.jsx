@@ -27,8 +27,6 @@ class Event extends Component {
         return eventStyle;
     }
 
-    
-
     handleBtnVisibility = () => {
         this.setState({
             deleteVisible: !this.state.deleteVisible,
