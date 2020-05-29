@@ -3,18 +3,6 @@ import { generateNumbers } from '../addFunctions';
 import DaysColumn from './DaysColumn';
 
 class CalendarTable extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            deleteVisible: false,
-        };
-    }
-
-    handleBtnVisible = () =>{
-        this.setState({
-            deleteVisible: !this.state.deleteVisible,
-        });
-    };
 
     render() {
         const {today, events, handleDeleteEvent} = this.props;
@@ -32,8 +20,6 @@ class CalendarTable extends Component {
                         id={id}
                         events={events}
                         handleDeleteEvent={handleDeleteEvent}
-                        handleBtnVisible={this.handleBtnVisible}
-                        deleteVisible={this.state.deleteVisible}
                     />
                     }
                 )}

@@ -7,9 +7,7 @@ const DaysColumn = (props) => {
     const { 
             id, 
             events, 
-            handleDeleteEvent, 
-            handleBtnVisible, 
-            deleteVisible,
+            handleDeleteEvent,
         } = props;
 
     const setRedline = (hour, id) => {
@@ -41,8 +39,6 @@ const DaysColumn = (props) => {
                         startDate={event.startDate}
                         endDate={event.endDate}
                         comment={event.comment}
-                        btnVisibility={handleBtnVisible}
-                        deleteVisible={deleteVisible}
                         deleteEvent={() => handleDeleteEvent(event.id)}
                     />);
                     return null;

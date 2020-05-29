@@ -1,41 +1,68 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { getEventTime } from '../addFunctions';
 
-const Event = (props) => {
-    const startTime = getEventTime(new Date(props.startDate));
-    const endTime = getEventTime(new Date(props.endDate));
-    const endEvent = new Date(props.endDate) - new Date(props.startDate);
-    const eventHeight = endEvent / 1000 / 60;
-    const startPos = (startTime === '00:00') ? 0 :
-        (new Date(props.startDate).getHours() * 60) + new Date(props.startDate).getMinutes();
-   
-    const eventStyle = {
-        top: `${startPos}px`,
-        left: "4px",
-        height: `${eventHeight}px`,
-    };
+class Event extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            startTime: getEventTime(new Date(props.startDate)),
+            endTime: getEventTime(new Date(props.endDate)),
+            endEvent: Number(new Date(this.props.endDate) - new Date(this.props.startDate)),
+            startPos: (this.startTime === '00:00') ? 0 :
+        (new Date(this.props.startDate).getHours() * 60) + new Date(this.props.startDate).getMinutes(),
+            deleteVisible: false,
+        
+        };
+    }
 
+    setStyle = () => {
+        const { startPos, endEvent } = this.state;
 
-    let btnVisibility = props.deleteVisible ? 
-        {visibility:"visible", top: `${eventHeight + 2}px`} : 
-        {visibility: 'hidden', top: `${eventHeight + 2}px`};
+        const eventStyle = {
+            top: startPos + 'px',
+            left: "4px",
+            height: endEvent / 1000 / 60 + 'px',
+        };
 
-    return (
-        <div className="event"
-            style={eventStyle}
-            onClick={props.btnVisibility}
-        >
-            <span>{props.title}</span>
-            <span>{`${startTime} - ${endTime}`}</span>
-            <span>{props.comment}</span>
-            <div className="deleteBtn"
-                style={btnVisibility}
-                onClick={props.deleteEvent}
+        return eventStyle;
+    }
+
+    
+
+    handleBtnVisibility = () => {
+        this.setState({
+            deleteVisible: !this.state.deleteVisible,
+        });
+
+        const {endEvent, deleteVisible} = this.state;
+        const eventHeight = endEvent / 1000 / 60;
+
+        const btnVisibility = deleteVisible ? 
+                {visibility: "visible", top: `${eventHeight + 2}px`} : 
+                {visibility: "hidden", top: `${eventHeight + 2}px`};
+        
+        return btnVisibility;
+    }   
+
+    render() {
+        console.log(this.setStyle)
+        return (
+            <div className="event"
+                style={{...this.setStyle()}}
+                onClick={() => this.props.btnVisibility()}
             >
-                delete
+                <span>{this.props.title}</span>
+                <span>{`${this.state.startTime} - ${this.state.endTime}`}</span>
+                <span>{this.props.comment}</span>
+                <div className="deleteBtn"
+                    style={{...this.handleBtnVisibility()}}
+                    onClick={this.props.deleteEvent}
+                >
+                    delete
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 };
 
 export default Event;
