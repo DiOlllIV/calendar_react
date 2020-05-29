@@ -25,7 +25,7 @@ class Event extends Component {
         };
 
         return eventStyle;
-    }
+    };
 
     handleBtnVisibility = () => {
 
@@ -37,7 +37,7 @@ class Event extends Component {
                 {visibility: "hidden", top: `${eventHeight + 2}px`,};
         
         return btnVisibility;
-    }   
+    };   
 
     setBtnVisibility = () => {
         this.setState({
@@ -46,7 +46,7 @@ class Event extends Component {
     };
 
     render() {
-        
+
         return (
             <div className="event"
                 style={{...this.setStyle()}}
