@@ -6,8 +6,9 @@ class Popup extends Component {
         super(props);
         this.state = {
             title: '',
-            startDate: '',
-            endDate: '',
+            date: '',
+            startTime: '',
+            endTime: '',
             comment: '',
             color: '',
         };
@@ -44,12 +45,16 @@ class Popup extends Component {
                     onChange={this.handleFillForm} 
                 /></span>
                 <div className="time-set">
+                    <input className="time-set__style time-set__date"
+                        type="date" name="date"
+                        onChange={this.handleFillForm}    
+                    />
                     <input className="time-set__style time-set__start"
-                        type="datetime-local" name="startDate"
+                        type="time" name="startTime"
                         onChange={this.handleFillForm}    
                     />
                     <input className="time-set__style time-set__end"
-                        type="datetime-local" name="endDate"
+                        type="time" name="endTime"
                         onChange={this.handleFillForm}    
                     />    
                 </div>

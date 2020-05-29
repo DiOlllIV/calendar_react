@@ -5,11 +5,13 @@ class Event extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            startTime: getEventTime(new Date(props.startDate)),
-            endTime: getEventTime(new Date(props.endDate)),
-            endEvent: Number(new Date(this.props.endDate) - new Date(this.props.startDate)),
+            startTime: getEventTime(new Date(`${this.props.date} ${this.props.startTime}`)),
+            endTime: getEventTime(new Date(`${this.props.date} ${this.props.endTime}`)),
+            endEvent: Number(new Date(`${this.props.date} ${this.props.endTime}`) -
+                new Date(`${this.props.date} ${this.props.startTime}`)),
             startPos: (this.startTime === '00:00') ? 0 :
-        (new Date(this.props.startDate).getHours() * 60) + new Date(this.props.startDate).getMinutes(),
+                (new Date(`${this.props.date} ${this.props.startTime}`).getHours() * 60) + 
+                    new Date(`${this.props.date} ${this.props.startTime}`).getMinutes(),
             deleteVisible: false,
         };
     }
@@ -46,7 +48,7 @@ class Event extends Component {
     };
 
     render() {
-
+        console.log(this.state.startTime)
         return (
             <div className="event"
                 style={{...this.setStyle()}}

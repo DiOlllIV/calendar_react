@@ -30,14 +30,18 @@ const DaysColumn = (props) => {
                     </div>
                 ))}
             {events.map(event => { 
-                if(id === `${new Date(event.startDate).getDate()}/${new Date(event.startDate).getMonth()}/${new Date(event.startDate).getFullYear()}`)
+                console.log(event.date)
+                console.log(event.startTime)
+                console.log(event.endTime)
+                if(id === `${new Date(`${event.date} ${event.startTime}`).getDate()}/${new Date(`${event.date} ${event.startTime}`).getMonth()}/${new Date(`${event.date} ${event.startTime}`).getFullYear()}`)
                     return (
                         <Event 
                         key={event.id}
                         id={event.id}
                         title={event.title}
-                        startDate={event.startDate}
-                        endDate={event.endDate}
+                        date={event.date}
+                        startTime={event.startTime}
+                        endTime={event.endTime}
                         comment={event.comment}
                         color={event.color}
                         deleteEvent={() => handleDeleteEvent(event.id)}
