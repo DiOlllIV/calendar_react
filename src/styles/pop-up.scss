@@ -21,6 +21,12 @@
         box-shadow: 0px 0px 8px -4px;
         cursor: pointer;
     }
+    &__color {
+        margin: auto;
+        &>input{
+            margin-left: 20px;
+        }
+    }
     &__comment {
         height: 40%;
         width: 90%;

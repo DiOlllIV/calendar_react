@@ -11,7 +11,6 @@ class Event extends Component {
             startPos: (this.startTime === '00:00') ? 0 :
         (new Date(this.props.startDate).getHours() * 60) + new Date(this.props.startDate).getMinutes(),
             deleteVisible: false,
-        
         };
     }
 
@@ -22,6 +21,7 @@ class Event extends Component {
             top: startPos + 'px',
             left: "4px",
             height: endEvent / 1000 / 60 + 'px',
+            backgroundColor: `${this.props.color}`,
         };
 
         return eventStyle;
@@ -33,8 +33,8 @@ class Event extends Component {
         const eventHeight = endEvent / 1000 / 60;
 
         const btnVisibility = deleteVisible ? 
-                {visibility: "visible", top: `${eventHeight + 2}px`} : 
-                {visibility: "hidden", top: `${eventHeight + 2}px`};
+                {visibility: "visible", top: `${eventHeight + 2}px`,} : 
+                {visibility: "hidden", top: `${eventHeight + 2}px`,};
         
         return btnVisibility;
     }   

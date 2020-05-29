@@ -9,6 +9,7 @@ class Popup extends Component {
             startDate: '',
             endDate: '',
             comment: '',
+            color: '',
         };
     }
     
@@ -35,6 +36,13 @@ class Popup extends Component {
                     placeholder="Add Title" 
                     onChange={this.handleFillForm}
                 />
+                <span className="pop-up__color">
+                    Choose color: 
+                <input 
+                    type="color"
+                    name="color"
+                    onChange={this.handleFillForm} 
+                /></span>
                 <div className="time-set">
                     <input className="time-set__style time-set__start"
                         type="datetime-local" name="startDate"
@@ -48,7 +56,8 @@ class Popup extends Component {
                 <textarea className="pop-up__comment"
                     type="comment" name="comment"
                     onChange={this.handleFillForm}
-                    placeholder="Add comments" />
+                    placeholder="Add comments" 
+                />
                 <button className="save-btn" 
                     onClick={() => createEvent(this.state)
                         .then(getEventsList())

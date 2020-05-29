@@ -39,6 +39,7 @@ const DaysColumn = (props) => {
                         startDate={event.startDate}
                         endDate={event.endDate}
                         comment={event.comment}
+                        color={event.color}
                         deleteEvent={() => handleDeleteEvent(event.id)}
                     />);
                     return null;
