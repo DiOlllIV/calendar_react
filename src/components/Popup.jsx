@@ -17,16 +17,13 @@ class Popup extends Component {
         this.setState({
             [name]: value,
         });
-
     };
 
     render() {
-        const visibility = this.props.visible ?
-            {visibility:"visible"} : {visibility: 'hidden'};
-
+        
         return (
             <div className="pop-up"
-                style={visibility}
+                style={{...this.props.setPopupVisibility()}}
             >
                 <button className="exit-btn"
                     onClick={this.props.popupVisibility}

@@ -46,7 +46,7 @@ class Event extends Component {
     };
 
     render() {
-        console.log(this.setStyle)
+        
         return (
             <div className="event"
                 style={{...this.setStyle()}}

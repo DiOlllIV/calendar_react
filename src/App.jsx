@@ -74,10 +74,23 @@ class App extends Component {
         });
     };
 
+    handleFillForm = (e) => {
+        const {name, value} = e.target;
+        this.setState({
+            [name]: value,
+        });
+    };
     
     handleDeleteEvent = (id) => {
         deleteEvent(id)
             .then(() => this.fetchEvents());
+    };
+
+    setPopupVisibility = () => {
+        const visibility = this.state.visible ?
+            {visibility:"visible"} : {visibility: 'hidden'};
+
+        return visibility;
     };
 
     render() {
@@ -107,6 +120,7 @@ class App extends Component {
                     </div>
                     <Popup visible={this.state.visible}
                         popupVisibility={this.handlePopupVisibility}
+                        setPopupVisibility={this.setPopupVisibility}
                     />
                 </section>
             </>
