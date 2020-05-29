@@ -28,9 +28,6 @@ class Event extends Component {
     }
 
     handleBtnVisibility = () => {
-        this.setState({
-            deleteVisible: !this.state.deleteVisible,
-        });
 
         const {endEvent, deleteVisible} = this.state;
         const eventHeight = endEvent / 1000 / 60;
@@ -42,12 +39,18 @@ class Event extends Component {
         return btnVisibility;
     }   
 
+    setBtnVisibility = () => {
+        this.setState({
+            deleteVisible: !this.state.deleteVisible,
+        });
+    };
+
     render() {
         console.log(this.setStyle)
         return (
             <div className="event"
                 style={{...this.setStyle()}}
-                onClick={() => this.props.btnVisibility()}
+                onClick={this.setBtnVisibility}
             >
                 <span>{this.props.title}</span>
                 <span>{`${this.state.startTime} - ${this.state.endTime}`}</span>
