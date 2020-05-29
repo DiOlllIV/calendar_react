@@ -48,7 +48,7 @@ class Event extends Component {
     };
 
     render() {
-        console.log(this.state.startTime)
+
         return (
             <div className="event"
                 style={{...this.setStyle()}}

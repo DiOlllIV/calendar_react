@@ -30,9 +30,6 @@ const DaysColumn = (props) => {
                     </div>
                 ))}
             {events.map(event => { 
-                console.log(event.date)
-                console.log(event.startTime)
-                console.log(event.endTime)
                 if(id === `${new Date(`${event.date} ${event.startTime}`).getDate()}/${new Date(`${event.date} ${event.startTime}`).getMonth()}/${new Date(`${event.date} ${event.startTime}`).getFullYear()}`)
                     return (
                         <Event 
